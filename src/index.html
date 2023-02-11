@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>electron-hubstaff</title>
+  <link rel="stylesheet" href="index.css" />
+  <script defer src="render.js"></script>
+</head>
+
+<body class="content">
+  <div class="login-page" id="loginpage">
+    <div class="signin-label">Sign In</div>
+    <input type="text" placeholder="User Name" class="name-input" id="username" />
+    <input type="password" placeholder="Password" class="pass-input" id="userpass" />
+    <button class="sign-btn" id="signin">Sign In</button>
+  </div>
+
+  <div class="main-page display-hide" id="mainpage">
+    <div class="time-panel">
+      <p class="time-text start-time-text" id="realtime">00 : 00 : 00</p>
+    </div>
+
+    <div class="capture-text" id="capturefield">Social Media</div>
+    <div id="startCapture" class="btn-capture btn-start-capture" placeholder="start recording">
+    </div>
+    <hr />
+    <div id="folder" class="btn-folder" placeholder="">
+    </div>
+  </div>
+  <!-- <input id="setFolder" value="set default directory to save capture" type="button"/> -->
+  <!-- <input id="trigger" value="Fullscreen screenshot" type="button"/> -->
+  <div class="footer">Copyright © 2023 Virendra M.@RAROME</div>
+  <script>
+    document.querySelector('#signin').addEventListener('click', function () {
+
+      let username = document.getElementById("username").value;
+      let userpass = document.getElementById("userpass").value;
+
+      const { ipcRenderer } = require('electron')
+
+      // send username to main.js 
+      ipcRenderer.send(IPC_CHANNELS.SIGNIN, username, userpass)
+
+      // receive message from main.js
+      ipcRenderer.on(IPC_CHANNELS.SIGNIN_REPLY, (event, arg) => {
+        alert(arg);
+
+      })
+
+    });
+  </script>
+</body>
+
+</html>

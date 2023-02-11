@@ -1,0 +1,39 @@
+{
+  "name": "electron-staff",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.5.0",
+    "electron-package": "^0.1.0",
+    "electron-packager": "^17.1.1"
+  },
+  "dependencies": {
+    "@jitsi/robotjs": "^0.6.11",
+    "aws-sdk": "^2.1311.0",
+    "iohook": "^0.9.3",
+    "screenshot-desktop": "^0.0.0-development",
+    "timer-node": "^5.0.7",
+    "yarn": "^1.22.19"
+  },
+  "iohook": {
+    "targets": [
+      "node-72",
+      "electron-85"
+    ],
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  },
+  "description": ""
+}
