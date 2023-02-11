@@ -4,20 +4,22 @@
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/electron/electron-original.svg" width="50" align="left"/> 
 
-<b>Tracking Employee screen, mouse, keyboard and IP</b>
 
-<p>4 functions</p>
-1. ScreenCapture and upload to AWD3 bucket
-2. tracking mouse and keyboard idletime
-3. tracking ip address visited
-4. build mac, linux, windows
+<b align="center">Tracking Employee screen, mouse, keyboard and IP</b>
 
-<p>version</p>
-1. node version > 14.17.5
-2. electron version > 11.0
+<br>
+<b>4 functions</b>
+<p>1. ScreenCapture and upload to AWD3 bucket</p>
+<p>2. tracking mouse and keyboard idletime</p>
+<p>3. tracking ip address visited</p>
+<p>4. build mac, linux, windows</p>
 
-<p>install and start</p>
-1. npm install yarn -g
-2. yarn
-3. npm start
+<b>version</b>
+<p>1. node version > 14.17.5</p>
+<p>2. electron version > 11.0</p>
+
+<b>install and start</b>
+<p>1. npm install yarn -g</p>
+<p>2. yarn</p>
+<p>3. npm start</p>
 
