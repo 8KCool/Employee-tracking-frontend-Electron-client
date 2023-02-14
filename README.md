@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://media.giphy.com/media/tPjlmJzj9Z99vwF5dV/giphy.gif" width="50" align="right"/> 
+  <img src="https://media.giphy.com/media/tPjlmJzj9Z99vwF5dV/giphy.gif" width="50" align="right"/> 
 
-<img src="https://github.com/devicons/devicon/blob/master/icons/electron/electron-original.svg" width="50" align="left"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/electron/electron-original.svg" width="50" align="left"/> 
 
-<b>Tracking Employee screen, mouse, keyboard and IP</b>
+  <b>Tracking Employee screen, mouse, keyboard and IP</b>
 
-<div>
+</div>
 
 <p>4 functions</p>
 1. ScreenCapture and upload to AWD3 bucket
