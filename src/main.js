@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -10,6 +10,7 @@ const { uploadToS3 } = require('./components/UploadAws3');
 const { loginAPI } = require('./components/api');
 const path = require('path');
 const ioHook = require('iohook');
+const md5 = require("blueimp-md5");
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -60,26 +61,33 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 
-let employeeData = null;
+var employeeData = null;
 
 // login
 ipcMain.on(IPC_CHANNELS.SIGNIN, (event, username, password) => {
 
   if (username && password) {
-    loginAPI(username, password, function (err, data) { // to get Employee Data
-      console.log(err);
+    let cryptPassword = md5(password);
 
-      if (err = "success") {
-        event.sender.send(IPC_CHANNELS.MAIN_START, username);
-        employeeData = data;
+    loginAPI(username, cryptPassword, function (res, data) { // to get Employee Data
+      if (res.statusCode == '200') {
+        employeeData = JSON.parse(data);
+        event.sender.send(IPC_CHANNELS.MAIN_START, employeeData);
       } else {
-        // send message to index.html
-        event.sender.send(IPC_CHANNELS.SIGNIN_REPLY, 'username or password is wrong!');
+        const options = {
+          type: 'info',
+          message: data
+        };
+        dialog.showMessageBox(null, options);
       }
     });
   }
   else {
-    event.sender.send(IPC_CHANNELS.SIGNIN_REPLY, 'username or password is required!');
+    const options = {
+      type: 'info',
+      message: 'Username or password is required!'
+    };
+    dialog.showMessageBox(null, options);
   }
 });
 

@@ -35,14 +35,13 @@ let flag = 0;
 ipcRenderer.on(IPC_CHANNELS.SCREENSHOT_COMPLETE, (e, {
   count, path
 } = {}) => {
-  console.log(count);
 });
 
 // mainpage start
-ipcRenderer.on(IPC_CHANNELS.MAIN_START, (e, username) => {
+ipcRenderer.on(IPC_CHANNELS.MAIN_START, (e, employeeData) => {
   mainpage.classList.remove('display-hide');
   loginpage.classList.add('display-hide');
-  capturefield.innerHTML = username;
+  capturefield.innerHTML = employeeData.name;
 });
 
 

@@ -1,32 +1,27 @@
 const req = require('request');
 const { IPC_URL } = require('../enums');
+const { dialog } = require('electron')
 
 /* 
     login and get user data
 */
 function loginAPI(username, password, callback) {
-    // req.get(IPC_URL.LOGIN_URL, function(err,res,body) {
-    //     if (err) {
-    //         return console.log(err);
-    //     }
-    //     if(res.statusCode == '200'){
-          
-    //     }
-    //     else{
-    //       const options = {
-    //         type: 'info',
-    //         message: 'Incorrect username or password! Please Check.'
-    //       };
-    //     }
-    //   });
-
-    let employeeData = {
-        id: 1,   // employee Id
-        name: username,
-        screenshotInterval: 3,  // screenshot count 3 / 1min
-        idleTimeLimit: 10,   // I guess it is 10 second for test  
-    }
-    callback("success", employeeData);
+    var url = IPC_URL.WEBSERVER_URL + IPC_URL.VERIFYUSER_URL + "?email=";
+    url = url.concat(username);
+    url = url.concat("&password=");
+    url  = url.concat(password);
+    req.get(url, function(err,res,body) {
+        if(err) {
+            const options = {
+              type: 'info',
+              message: 'Connection Error!'
+            };
+            dialog.showMessageBox(null, options);
+        }
+        else {
+            callback(res, body);
+        }
+    });
 }
 
 /*
@@ -35,13 +30,20 @@ function loginAPI(username, password, callback) {
     - get current capture state in current time(10mins) ;
 */
 function getCurrentIdleState(employeeData, callback) {
-    
-    let returnData = {
-        LeftTime: 34,  //  if I start capture in 8.47  -> leftTime : 13
-        LeftCaptureCnt : 2, // (if admin set 3)  // left screencapture count
-    }
-
-    callback("success", returnData);
+    var url = IPC_URL.WEBSERVER_URL + IPC_URL.GETCURRENTSTATE_URL + "?employeeId=";
+    url = url.concat(employeeData._id);
+    req.get(url, function(err,res,body) {
+        if(err) {
+            const options = {
+              type: 'info',
+              message: 'Connection Error!'
+            };
+            dialog.showMessageBox(null, options);
+        }
+        else {
+            callback(res, body);
+        }
+    });
 }
 
 
@@ -49,8 +51,23 @@ function getCurrentIdleState(employeeData, callback) {
     update idletime and mouse/keyboard state
 */
 function updateActionAPI(actionData, callback) {
+
     console.log(actionData);
-    callback("success");
+    console.log(JSON.stringify(actionData));
+    var clientServerOptions = {
+        uri: IPC_URL.WEBSERVER_URL+IPC_URL.UPLOADSTATE_URL,
+        body: JSON.stringify(actionData),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    req(clientServerOptions, function (error, response) {
+        // console.log(error,response.body);
+        callback();
+        return;
+    });
+    
 }
 
 module.exports = {

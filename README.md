@@ -1,29 +1,23 @@
 
-<div align="center">
-    <img src="https://media.giphy.com/media/tPjlmJzj9Z99vwF5dV/giphy.gif" width="50" align="right"/> 
-    <img src="https://github.com/devicons/devicon/blob/master/icons/electron/electron-original.svg" width="50" align="left"/> 
-    <h3>Tracking Employee screen, mouse, keyboard and IP</h3>
-</div>
 
-<br><br><br>
-Track Employee's mouse and keyboard action and check work state.
+<img src="https://media.giphy.com/media/tPjlmJzj9Z99vwF5dV/giphy.gif" width="50" align="right"/> 
 
-## Functions
+<img src="https://github.com/devicons/devicon/blob/master/icons/electron/electron-original.svg" width="50" align="left"/> 
 
-<p>1. ScreenCapture and upload to AWD3 bucket</p>
-<p>2. tracking mouse and keyboard idletime</p>
-<p>3. tracking ip address visited</p>
-<p>4. build mac, linux, windows</p>
+<b>Tracking Employee screen, mouse, keyboard and IP</b>
 
-## version
+<p>4 functions</p>
+1. ScreenCapture and upload to AWD3 bucket
+2. tracking mouse and keyboard idletime
+3. tracking ip address visited
+4. build mac, linux, windows
 
-<p>1. node version > 14.17.5</p>
-<p>2. electron version > 11.0</p>
+<p>version</p>
+1. node version > 14.17.5
+2. electron version > 11.0
 
-## To start
-
-<b>install and start</b>
-<p>1. npm install yarn -g</p>
-<p>2. yarn</p>
-<p>3. npm start</p>
+<p>install and start</p>
+1. npm install yarn -g
+2. yarn
+3. npm start
 

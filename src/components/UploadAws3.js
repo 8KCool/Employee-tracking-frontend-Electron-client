@@ -35,12 +35,12 @@ function uploadImageToAWS(image, filename) {
     // });
 }
 
-const uploadToS3 = (file, employeeId, displayType) => {
+const uploadToS3 = (file, employeeId, realfilepath) => {
     // console.log(file);
     console.log("upload start image");
     const s3Params = {
         Bucket: 'emt-image-workship',
-        Key: `${employeeId}/${Date.now()}_${displayType}.png`,
+        Key: realfilepath,
         Body: file,
         ContentType: 'image/png'
     };

@@ -17,9 +17,19 @@ const CREDENTIALS = {
   secretAccessKey: "oTgBZJ0MmU7kJVqkpYwOTA8pmTwzB6RRTpsTd8Gc"
 };
 
+// const IPC_URL = {
+//   WEBSERVER_URL: 'http://localhost:5000',
+//   VERIFYUSER_URL: '/api/verifyUser',
+//   GETCURRENTSTATE_URL: '/api/get_current_state',
+//   UPLOADSTATE_URL: '/api/upload_state',
+// }
+
 const IPC_URL = {
-  LOGIN_URL: 'https://100.100.100.100',
-}
+    WEBSERVER_URL: 'http://api.workship.in',
+    VERIFYUSER_URL: '/auth/login',
+    GETCURRENTSTATE_URL: '/api/get_current_state',
+    UPLOADSTATE_URL: '/api/upload_state',
+  }
 
 module.exports = {
   IPC_CHANNELS,
